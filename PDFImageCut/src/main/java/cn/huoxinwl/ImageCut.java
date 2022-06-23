@@ -80,7 +80,7 @@ public class ImageCut {
         return resultImage;
     }
 
-    public static void cutManage(String path) throws IOException {
+    public static void cutManage(String path,int x,int y1,int y2,int xLen,int yLen) throws IOException {
         //读取文件夹下的所有图片
         ArrayList<String> fileList = getFiles(path);
 
@@ -106,11 +106,11 @@ public class ImageCut {
             firstName = fileName.substring(0,midPos);
             lastName = fileName.substring(midPos+1);
             output = new File(path+firstName+"-1."+lastName);
-            result= new ImageCut().imageCutByRectangle(image, 241, 504, 2046,1158);
+            result= new ImageCut().imageCutByRectangle(image, x, y1, xLen,yLen);
             ImageIO.write(result, lastName, output);
             System.out.println(firstName+"-1."+lastName);
             output = new File(path+firstName+"-2."+lastName);
-            result= new ImageCut().imageCutByRectangle(image, 241, 1902, 2046,1158);
+            result= new ImageCut().imageCutByRectangle(image, x, y2, xLen,yLen);
             ImageIO.write(result, lastName, output);
             System.out.println(firstName+"-2."+lastName);
         }
@@ -136,6 +136,21 @@ public class ImageCut {
     }
 
     public static void main(String[] args) throws Exception {
-        cutManage("I:\\408\\2023【王道】领学班\\02.考点精讲\\02.计算机网络\\03.第三章 数据链路层\\讲义\\（提取图片）课件（下）（免费网课，关注公众号：研料小站）");
+        String path = "C:\\Users\\cbx12\\Desktop\\1";
+
+        //2046*1158
+        //cutManage(path,241,504,1902,2046,1158);
+
+        //1123
+        //cutManage(path,75,156,604,644,365);
+
+        //2512*3555
+        //cutManage(path,219,316,1884,2082,1358);
+
+        //1322*1871
+        //cutManage(path,127,265,998,1072,602);
+
+        //1983*2807
+        cutManage(path,192,400,1500,1605,908);
     }
 }
