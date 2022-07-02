@@ -145,12 +145,14 @@ public class ImageCut {
         //cutManage(path,75,156,604,644,365);
 
         //2512*3555
-        //cutManage(path,219,316,1884,2082,1358);
+        //cutManage(path,242,495,1911,2033,1149);
+        //cutManage(path,219,316,1884,2082,1358);//常用
 
         //1322*1871
-        //cutManage(path,127,265,998,1072,602);
+        //cutManage(path,127,236,1029,1072,602);
+        cutManage(path,127,265,998,1072,602);//常用
 
         //1983*2807
-        cutManage(path,192,400,1500,1605,908);
+        //cutManage(path,192,400,1500,1605,908);
     }
 }
