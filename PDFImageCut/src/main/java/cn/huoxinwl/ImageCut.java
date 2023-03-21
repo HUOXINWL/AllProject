@@ -80,13 +80,15 @@ public class ImageCut {
         return resultImage;
     }
 
-    public static void cutManage(String path,int x,int y1,int y2,int xLen,int yLen) throws IOException {
+    public static void cutManage(String path,String outPath,int x,int y1,int y2,int xLen,int yLen) throws IOException {
         //读取文件夹下的所有图片
         ArrayList<String> fileList = getFiles(path);
 
         //生成文件夹名和文件夹
-        path = path+"\\out\\";
-        File file=new File(path);
+        if (outPath.equals("")){
+            outPath = outPath+"\\out\\";
+        }
+        File file=new File(outPath);
         if(!file.exists()){		//如果 module文件夹不存在
             file.mkdir();		//创建文件夹
         }
@@ -105,11 +107,11 @@ public class ImageCut {
 
             firstName = fileName.substring(0,midPos);
             lastName = fileName.substring(midPos+1);
-            output = new File(path+firstName+"-1."+lastName);
+            output = new File(outPath+firstName+"-1."+lastName);
             result= new ImageCut().imageCutByRectangle(image, x, y1, xLen,yLen);
             ImageIO.write(result, lastName, output);
             System.out.println(firstName+"-1."+lastName);
-            output = new File(path+firstName+"-2."+lastName);
+            output = new File(outPath+firstName+"-2."+lastName);
             result= new ImageCut().imageCutByRectangle(image, x, y2, xLen,yLen);
             ImageIO.write(result, lastName, output);
             System.out.println(firstName+"-2."+lastName);
@@ -136,7 +138,8 @@ public class ImageCut {
     }
 
     public static void main(String[] args) throws Exception {
-        String path = "C:\\Users\\cbx12\\Desktop\\1";
+        //String path = "C:\\Users\\cbx12\\Desktop\\1\\10";
+        String outPath = "C:\\Users\\cbx12\\Desktop\\1\\out\\";
 
         //2046*1158
         //cutManage(path,241,504,1902,2046,1158);
@@ -150,8 +153,19 @@ public class ImageCut {
 
         //1322*1871
         //cutManage(path,127,236,1029,1072,602);
-        cutManage(path,127,265,998,1072,602);//常用
-
+        /*for(int i = 1;i<=16;i++){
+            String path = "C:\\Users\\cbx12\\Desktop\\1\\"+Integer.toString(i);
+            cutManage(path,outPath,127,265,998,1072,602);//常用
+        }*/
+        cutManage("I:\\百度网盘\\04.操作系统\\05.第五章输入输出管理\\5.1_1",outPath,127,265,1002,1072,602);//常用
+        cutManage("I:\\百度网盘\\04.操作系统\\05.第五章输入输出管理\\5.1_2",outPath,127,265,1002,1072,602);//常用
+        cutManage("I:\\百度网盘\\04.操作系统\\05.第五章输入输出管理\\5.1_3",outPath,127,265,1002,1072,602);//常用
+        cutManage("I:\\百度网盘\\04.操作系统\\05.第五章输入输出管理\\5.1_4",outPath,127,265,1002,1072,602);//常用
+        cutManage("I:\\百度网盘\\04.操作系统\\05.第五章输入输出管理\\5.1_5",outPath,127,265,1002,1072,602);//常用
+        cutManage("I:\\百度网盘\\04.操作系统\\05.第五章输入输出管理\\5.2_1",outPath,127,265,1002,1072,602);//常用
+        cutManage("I:\\百度网盘\\04.操作系统\\05.第五章输入输出管理\\5.2_2",outPath,127,265,1002,1072,602);//常用
+        cutManage("I:\\百度网盘\\04.操作系统\\05.第五章输入输出管理\\5.2_3",outPath,127,265,1002,1072,602);//常用
+        cutManage("I:\\百度网盘\\04.操作系统\\05.第五章输入输出管理\\5.2_4",outPath,127,265,1002,1072,602);//常用
         //1983*2807
         //cutManage(path,192,400,1500,1605,908);
     }
